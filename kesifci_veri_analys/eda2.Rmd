@@ -6,8 +6,6 @@ library(Hmisc)
 
 describe(df)
 
-#funmodelling kategorik ve sayısal gorsellestirme yok :(
-
 
 
 ```
