@@ -1,0 +1,94 @@
+```{r}
+df <- economics
+
+ggplot(df,aes(date,pop))+
+  geom_line(aes(size=unemploy/pop),color="red")
+
+#populasyon icinde issizlik yıl ıcınde artmıs
+
+```
+
+```{r}
+df <- economics
+ggplot(df, aes(date, psavert)) +
+  geom_line() +
+  stat_smooth()
+```
+```{r}
+veri <- data.frame(
+  id = seq(1,60),
+  ogrenciler = paste("Ogrenci", seq(1,60), sep="_"),
+  notlar = sample(seq(10,100), 60, replace = T)
+)
+
+veri
+```
+```{r}
+veri <- data.frame(
+  id = seq(1,60),
+  ogrenciler = paste("Ogrenci", seq(1,60), sep="_"),
+  notlar = sample(seq(10,100), 60, replace = T)
+)
+
+veri
+```
+
+
+```{r}
+p <- ggplot(veri, aes(x = as.factor(id), y = notlar)) +       
+  
+  geom_bar(stat="identity", fill = alpha("skyblue", 0.7)) + 
+  coord_polar(start = 0) 
+p
+  
+```
+
+## TreeMap
+
+Treemaps hiyerarsik yapidaki veri setlerini gorsellestirmek icin ic ice kare-dikdortgen yapilari kullanan bir veri gorsellestirme teknigidir.
+
+Agacin her dalina veri icerisindeki bir kategori diktortgen olarak atanir ve alt dallarina da o kategorinin alt kategorileri atanir. En altta yer alan yapraklarda ise bu kategorilere ait olan surekli degisken degerleri gosterilir, yani bir adet surekli degiskene de ihtiyacimiz vardir.
+
+```{r}
+install.packages("treemap")
+```
+```{r}
+
+library(treemap)
+
+df <- data.frame(
+  gruplar = c("grup_1", "grup_2","grup_3"),
+  degerler = c(10, 90, 60)
+  
+)
+df
+```
+```{r}
+treemap(df,index="gruplar",vSize="degerler",type="index")
+```
+
+#karar agacı gibi
+```{r}
+df<- diamonds
+df <- select(diamonds, cut, color, price)
+
+df <- data.frame(
+  gruplar = c(rep("grup_1", 4),
+               rep("grup_2", 2),
+               rep("grup_3", 3)),
+  
+  alt_gruplar = paste("alt_grup", c(1,2,3,4,1,2,1,2,3), sep = "_"),
+  
+  degerler = c(13,5,22,12,11,4,2,5,6)
+  
+)
+
+df
+```
+```{r}
+treemap(df, index = c("gruplar","alt_gruplar"), 
+        vSize = "degerler", 
+        type ="index",)
+```
+
+

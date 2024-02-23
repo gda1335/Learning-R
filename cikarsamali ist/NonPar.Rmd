@@ -1,0 +1,55 @@
+#nonparametrik tek orneklem
+
+#normallik saglanmıyorsa t testi sonunda welch de de aynısı çıkmıs olacak
+n<<< ise t testi benzeri parametrik olmayan testler kullanılmıs olacak: sign test gibi
+
+```{r}
+install.packages("DescTools")
+library(DescTools)
+SignTest(df$olcumler,mu=170)
+```
+
+```{r}
+
+#ilk 10 gozlem 
+SignTest(df$olcumler[1:10],mu=170)
+shapiro.test(df$olcumler[1:10]) #dagılımı normal kabul eder
+
+
+```
+
+1-kurulan hipotezler medyan uzerinden kuruldu (nonparamterik )
+```{r}
+#ilk 10 gozlem icin 
+
+SignTest(c(1,1,1,1,1,1,1,1,1,1,1,1,10), mu = 4)
+
+# ort4 olmadıgı testini nonparamttrik olmayan bbi testle yaptık
+shapiro.test(c(1,1,1,1,1,1,1,1,1,1,1,1,10,9,10))
+```
+
+## oran testi
+```{r}
+#500 kisi 40 tanesi alısveris yapmıs
+#donusum oranı=40/500
+# 1 varsayım var, arkada z testi kullanılacagı için :
+#n > 30 
+prop.test(x=40,n=500,p=0.05,alternative = "two.sided")
+
+#h0 hipotezi reddedildi 
+#0.002927 <005 , guven aralıgı :  0.05843922 0.10823111
+
+```
+
+```{r}
+prop.test(x=40,n=500,p=0.05,alternative = "less")
+#005 den kucuk mudur diye test 
+#ho reddemedik p > 005 
+```
+```{r}
+prop.test(x=40,n=500,p=0.05,alternative = "greater")
+#005 den kucuk mudur diye test 
+#ho reddemedik p > 005 
+```
+
+

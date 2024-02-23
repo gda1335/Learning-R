@@ -1,0 +1,103 @@
+---
+title: "fonksiyonel"
+output: html_document
+date: "2024-02-20"
+---
+
+
+```{r}
+#vektorler
+#vektor matris df
+
+
+rep(2:4, 2) #2 den 4 e 2 sayi al
+
+
+
+```
+```{r}
+f <- rep(2:7, 3)
+print(f)
+is.vector(f)
+
+typeof(f) #vector tipi
+
+```
+# tek degerden olusuypsa atomik vektor oluyor
+
+```{r}
+a <- "ali"
+
+a
+is.character(a)
+
+b <- c("ali","veli")
+
+is.character(b)
+```
+```{r}
+v <- 1:10
+y <- 2:11
+v+y  # 2 vektor toplanabilir uzunlukları aayni
+
+#c ifadesi birlestirme
+
+c(v,y) #birlesti
+
+rbind(v,y) #satir bazi
+cbind(v,y) #sıtın bazi 
+
+```
+
+```{r}
+#vektor indexi
+
+x = 1:11
+x[1]
+
+
+x[2:5]
+
+#sadece o indexlere karsilik gelenler
+
+```
+
+
+```{r}
+v  <- 10:100
+v[1:10]
+v[c(10,20,40)] #farkli index degerleri cekildi
+v[10] 
+
+```
+
+
+
+
+```{r}
+```
+
+
+```{r}
+#kosullu eleman
+b <- 17:22
+
+b[b>4]
+```
+
+
+```{r}
+v <- 10:100
+v[v > 50 & v < 80]
+```
+
+
+
+```{r}
+a <- c("ali", "veli", "isik", "uzaya gitsin")
+sonuc <- a[a == "veli"]
+print(sonuc)
+
+```
+
+

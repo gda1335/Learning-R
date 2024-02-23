@@ -1,0 +1,56 @@
+```{r}
+
+
+install.packages("nycflights13")
+library(nycflights13)
+
+
+print(nycflights13::flights)
+#mutate()
+
+
+str(df)
+```
+```{r}
+# Eksik değerleri temizle
+df<- na.omit(df)
+```
+
+#yoksa normalde mutate diyince .... sey cıkıcak
+
+```{r}
+transmute(df,kaz=arr_delay - dep_delay,
+       hiz =distance/arr_time*60,
+       yeni=kaz/hiz)
+
+str(df)
+```
+```{r}
+#gruplama
+
+#mean #median #
+
+
+#select icine df yazmaya gerek yok
+df %>%
+  select(contains("time")) %>%
+  filter(dep_time>550)
+```
+```{r}  
+#hangi havvayolu kacar
+
+#kendisinden once gelen cıktıyı sonrasına atmaya yarıyor pipe
+df %>%
+group_by(carrier) %>%
+  summarise(n=n(),ORTALAMA=mean(dep_delay),na.rm=TRUE,
+            medyan=median(dep_delay),
+            sd=sd(dep_delay)
+                          )
+            
+  
+```
+
+
+
+
+

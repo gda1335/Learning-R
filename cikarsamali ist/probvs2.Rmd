@@ -1,0 +1,99 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+```{r}
+#bagımlı 2 örneklem t testi
+
+```
+pazarlamada satıs personinin performansını arttırmak lazım bir egitim verildi personele ikna egitimleri vs
+her yıl bu kadar elemana yatırım yapıluyor ama bunun katkısını gördük mü tarzı ?
+-mevsimsel olabilir belki satislar 
+-ortalama alarak degil bunları ölcmek zaten mümkün degil
+
+hipotez:
+6 aylık sürecte personel satıs ortalamaları 
+6 aylık egitim önc 
+"" sonrası 
+
+
+H0: Mö  =  Ms
+H1: Mö !=  Ms
+
+```{r}
+oncesi <- c(123,119,119,116,123,123,121,120,117,118,121,121,123,119,
+            121,118,124,121,125,115,115,119,118,121,117,117,120,120,
+            121,117,118,117,123,118,124,121,115,118,125,115)
+
+sonrasi <- c(118,127,122,132,129,123,129,132,128,130,128,138,140,130,
+             134,134,124,140,134,129,129,138,134,124,122,126,133,127,
+             130,130,130,132,117,130,125,129,133,120,127,123)
+
+
+A <- data.frame(ort_sat=oncesi,ONCE_SONRA="ONCE")
+B <- data.frame(ort_sat=sonrasi,ONCE_SONRA="SONRA")
+once_sonra=rbind(A,B)
+
+once_sonra
+
+#dplyr ile ozet istatistik
+
+
+once_sonra %>%
+  group_by(ONCE_SONRA) %>%
+  summarise(mean(ort_sat),sd(ort_sat),var(ort_sat))
+
+
+ggplot(once_sonra,aes(ONCE_SONRA,ort_sat))+
+  geom_boxplot()
+
+
+#sttd ve varyanslar fazla sonrasında
+```
+
+#istatistiksel olarak konusmadık ama sanırım bu egitimler ise yaramıs
+
+1- normallik varsayımı
+
+
+```{r}
+apply(data.frame(oncesi, sonrasi), 2, shapiro.test)
+
+```
+
+shapiro ,teorik dagılım ile ornek dagılım arası fark yok
+ho reddemedik
+oncesi ve sonrası icinde 
+normallik saglanıyor
+
+```{r}
+t.test(once_sonra$ort_sat ~ once_sonra$ONCE_SONRA, paired = TRUE)
+
+# ho red yani ,anlamlı fark anlamında %95 guvenle önceye ait olan gozlem sonucunda fark vardır
+
+#egitimlerden verimli sonuc aldık
+```
+
+
+
+nonparametrik karşılık
+
+
+
+```{r}
+
+
+wilcox.test(df$oncesi, df$sonrasi, paired = TRUE)
+
+#paired : bagımlı
+
+
+
+```
+oncesi ve soınrası olarak anlamlı fark var
+ ho red
+ 
+bunu önceki normallik ve varyans varsayımı saglanmadıgında kullanıyoruz mann whitneyi 
+
+

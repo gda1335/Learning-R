@@ -1,0 +1,25 @@
+```{r}
+data()
+
+data(package=.packages(all.available = TRUE))
+df <- survival
+df
+```
+
+```{r}
+#dısaridan okuma
+
+
+library(readr)
+ornekcsv <- read_csv("data_sets/reading_data/ornekcsv.csv")
+View(ornekcsv)
+
+
+
+
+
+
+```
+
+
+

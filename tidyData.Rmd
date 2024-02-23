@@ -1,0 +1,41 @@
+```{r}
+#tidy data
+
+library(tidyverse)
+
+table4a
+#hata var 
+
+table4a %>%
+  gather("1999","2000",key="year",value="cases")
+
+  
+  
+```
+```{r}
+##Spereading: gathering in tersi
+
+table2 %>% 
+  spread(key = "type", value = "count" )  #value count degil
+
+```
+
+
+```{r}
+#sql ortamlarında düzeltip r 'a getirmek mantıklı
+
+table3
+
+```
+
+
+```{r}
+table3 %>% 
+  separate(rate, into = c("var1", "var2"))
+```
+
+```{r}
+table5 %>% 
+  unite(new, century, year, sep = " ")
+```
+

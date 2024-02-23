@@ -1,0 +1,37 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+kare <- function (x)
+{x^2
+}
+kare(7)
+kare(4)
+```
+
+
+```{r}
+kare_ve_carp <- function(x,y)
+{
+  
+  x^2*y
+}
+kare_ve_carp(2,6)
+```
+
+```{r}
+kare_ve_carp <- function(x,y=1)
+{
+  x^2*y
+}
+kare_ve_carp(2)
+```
+
+```{r}
+
+
+
+```
+

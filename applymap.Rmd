@@ -1,0 +1,60 @@
+```{r}
+#satir sutun bazli islem
+
+df <- mpg[,c("displ","cyl","cty")]
+
+apply(df,1,sum)  #1 satir butun satirlar toplandi
+
+
+apply(df,2,mean) #sutun bazi sayisal ort
+
+mean(df$displ)
+
+sum(df$displ)
+
+
+
+```
+
+
+```{r}
+
+#direk apply kullan satirlar için for isi uzatiyor
+
+
+#sapply
+l <- list(a = rnorm(90, 1,2), 
+          b = rbeta(10,1,2), 
+          c = 1:5000 )
+
+l
+
+
+sapply(l, mean) 
+
+```
+```{r}
+#turlere gore groupby  yani map gibi 
+
+# Install the tidyverse packages
+install.packages("tidyverse")
+
+# Load the tidyverse packages
+library(tidyverse)
+
+```
+
+
+
+```{r}
+mtcars %>%
+  split(.$cyl) %>% # from base R #cyl e gore split cylindere gore grouby
+  map(~ lm(mpg ~ wt, data = .)) %>% #wt ile map le  ve linear reg
+  map(summary) %>%
+  map_dbl("r.squared") #metrik
+
+
+
+```
+
+

@@ -1,0 +1,102 @@
+```{r}
+
+
+install.packages("nycflights13")
+library(nycflights13)
+
+
+print(nycflights13::flights)
+
+```
+
+```{r}
+
+df <- nycflights13::flights  #sql e benziyor
+
+
+df %>% 
+  select(dep_delay, day, carrier, distance) %>% 
+  filter(dep_delay > 10) %>%  #10dan buyuk delay
+  group_by(carrier) %>% 
+  summarise(n = n(),
+            ortalama = mean(dep_delay),
+            mean(distance)) %>% 
+  arrange(desc(ortalama))
+#delay ve mesafeye gore ortalama alindi
+```
+
+
+```{r}
+str(df)   #df.dtypes
+select(df,dep_delay,month,day,dep_time)  #tibble formati sql gibi ayni
+```
+
+
+
+
+
+```{r}
+
+select(df,6:11)
+
+
+```
+
+
+
+
+
+```{r}
+#contains
+
+
+select(df,contains("time")) #time ile ilgili degiskenleri getir
+
+select(-c(dep_delay)) #istemedigim degiskeni disarda birak
+```
+
+
+
+```{r}
+#filter
+#str(df)
+df <- nycflights13::flights
+filter(df,day==1)
+
+filter(df,dep_time>517 & day==1)
+#dep delayden ortalama buyuk olani al
+
+
+```
+
+```{r}
+
+library(dplyr)
+
+# Eksik değerleri temizle
+df_cleaned <- na.omit(df)
+
+# df_cleaned üzerinde filter ve select işlemleri
+a <- df_cleaned %>% filter(dep_delay > mean(dep_delay)) %>% select(carrier,dep_delay)
+arrange(a,desc(dep_delay))
+
+
+```
+
+
+
+
+
+```{r}
+
+#gozlem secme
+
+
+sample_n(df,10)
+```
+```{r}
+head(10)
+top_n(df,10)
+slice(df,100:120)
+```
+

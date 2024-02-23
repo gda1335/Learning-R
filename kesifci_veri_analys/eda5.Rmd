@@ -1,0 +1,66 @@
+```{r}
+#marjinlere bagli dagilim
+
+install.packages("ggExtra")
+library(ggExtra)
+
+
+```
+```{r}
+g <- ggplot(df, aes(x = wt, y = mpg, fill = cyl)) +
+  geom_point() + 
+  geom_label(label = rownames(df),  
+            nudge_x = 0.25, 
+            nudge_y = 0.2) +
+  geom_smooth(method = lm, se = FALSE)
+
+
+ggMarginal(g, type = "histogram", fill = "slateblue")
+
+#yanlarda mpg ve cyl icin histogramlar gosterildi
+```
+
+```{r}
+ggMarginal(g, type = "boxplot", fill = "red")
+
+
+```
+##  heat maps
+```{r}
+
+
+df <- as.matrix(mtcars)
+heatmap(df, Colv = NA, Rowv = NA, scale = "column")
+
+
+
+```
+
+## kategorik - surekli iliskisi
+
+```{r}
+
+install.packages("GGally")
+library(GGally)
+
+
+```
+
+```{r}
+df <- mtcars[ , c(1,3:6)]
+
+cor(df)
+```
+
+
+```{r}
+cor.test(df$mpg, df$wt)  #pearson corrr katsayısı ve test
+plot(df)
+
+ggcorr(df)  #gorr graphs
+ggpairs(df) #sagilimlarda verilmis
+```
+
+
+
+

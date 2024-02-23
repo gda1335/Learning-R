@@ -1,0 +1,90 @@
+## sürekli  ve kategorik 
+
+```{r}
+install.packages("Hmisc")
+library(Hmisc)
+
+describe(df)
+
+#funmodelling kategorik ve sayısal gorsellestirme yok :(
+
+
+
+```
+
+
+
+## Surekli ve Kategorik Degiskenler Icin Detaylara
+```{r}
+library(psych)  #surekli degisken describe fonksiyonlari
+
+describe(mpg$displ)  
+```
+
+
+```{r}
+library(Hmisc)
+Hmisc::describe(mpg$displ) #descrbe ile ozgun kac deger max min deger 
+```
+
+
+```{r}
+library(pastecs)
+stat.desc(mpg)
+```
+
+
+```{r}
+mpg
+df <- select(mpg, trans, cty, cyl, hwy)  #kategorikler selectlendi
+describeBy(df, df$trans) #kategorik degisken kırılımda ozetleme
+#vites turleri degisiyormus
+```
+```{r}
+install.packages("d3Tree", repos = "https://cran.rstudio.com/")
+library(d3Tree)
+
+```
+
+## titanic icin agac gostergeleri
+
+```{r}
+d3tree(list(root = df2tree(rootname ='Titanic', 
+                           struct = as.data.frame(Titanic)), 
+                           layout = 'collapse'))
+```
+
+
+
+```{r}
+devtools::install_github("rsquaredacademy/xplorerr")
+library(xplorerr)
+app_descriptive()  #bu premium 
+```
+
+##bar plot
+```{r}
+library(tidyverse)
+df <- diamonds
+glimpse(df) #
+#kac cesit cut var
+
+ggplot(df, aes(cut)) +
+  geom_bar() #plt.show() gibi
+##ggplt ile
+```
+
+
+```{r}
+ggplot(df, aes(cut, fill = color)) +
+  geom_bar(position = position_dodge()) + 
+  ggtitle("Bu yazi baslik yazisidir") +
+  xlab("Pirlanta kaliteleri") + 
+  ylab("Gozlenme Sikliklari")
+
+
+```
+
+## sutun grafikleri kategorikleri gostermek için 
+
+

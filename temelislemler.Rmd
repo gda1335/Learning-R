@@ -1,0 +1,105 @@
+---
+title: "temel_islemler1"
+output: html_document
+date: "2024-02-19"
+editor_options: 
+  chunk_output_type: console
+---
+
+
+##operatorler
+
+
+```{r}
+# =
+# <-  # bunu kullan
+# <<-  #global ,yet tutmasi için yoksa hafızda tutmaz
+a <- 1
+b <- 3
+
+```
+
+
+```{r}
+#aritmetik
+
+# -
+# * 
+# /
+# + 
+10*4
+
+20-1
+
+
+```
+```{r}
+p <- 2
+q <- 1
+sonuc <- q * p  # sonuca esitle
+print(sonuc)
+
+```
+
+
+```{r}
+#kare alma
+
+c <- 4
+
+c*c
+```
+
+
+```{r}
+# < > !=
+4>2 #true
+
+2!=10
+
+
+
+```
+
+
+
+```{r}
+veri <- 1:10
+
+veri[veri<3]  #3den kucukleri al matlab gibi 1den baslıyor
+
+```
+
+```{r}
+#hesap mak
+
+
+#-+/*
+
+
+abs(-2)
+sqrt(100)
+
+a <- 2
+b <- sqtr(25)
+
+c <- abs(-6)
+
+log(sqrt(a*b*c))
+```
+
+```{r}
+#temel fonk
+
+#sessioninfo 
+sessionInfo() #ozellikler
+
+dir() #dosya alti 
+
+
+file.exists("untitled.rmd") #dosya var mı yok mu 
+ls() #degisken fonk arama
+rm("a")  #degisken vs silme
+```
+
+

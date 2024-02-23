@@ -1,0 +1,82 @@
+---
+title: "R Notebook"
+output: html_notebook
+
+---
+
+```{r}
+l1 <- list("super","man",1,2,34,6)
+l1
+
+#list birlestirme
+
+
+l1=list("ist","ank","izmir","adana")
+l <- list(l1,l1)  #icice liste
+print(l)
+```
+
+
+```{r}
+#vector yapmak için
+
+unlist(a)
+```
+ 
+
+```{r}
+#tibble: df yerine 
+
+l <- list(1,1:100,"ali","superman")
+l
+
+```
+```{r}
+install.packages("tibble")
+library(tibble)
+
+```
+
+```{r}
+#tibble deneme
+
+
+my_tibble <- tibble(
+  name = c("John", "Jane", "Bob"),
+  age = c(25, 30, 22),
+  city = c("New York", "San Francisco", "Chicago")
+)
+
+# Tibble'ı ekrana bas
+print(my_tibble)
+
+```
+
+```{r}
+#kategorik degiskenler
+
+
+rutbe <- c("er", "onbasi", "yuzbasi", "binbasi", "albay")
+is.vector(rutbe)
+
+typeof(rutbe)
+a <- factor(rutbe)
+a #level : ordinal
+
+
+```
+```{r}
+ordered(rutbe,levels=c("er","onbasi","yuzbasi","binbasi","albay"))
+
+#levels girip orderladik yada factorlerdiklerinin içne levels gir
+
+
+
+```
+```{r}
+a <- factor(rutbe, 
+            levels = c("er", "onbasi", "yuzbasi", "binbasi", "albay"), 
+            ordered = TRUE)
+a
+```
+

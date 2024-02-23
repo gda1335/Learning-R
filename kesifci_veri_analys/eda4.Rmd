@@ -1,0 +1,99 @@
+```{r}
+
+# iqr methodu ve aykirilik ---<> sayisal degisknlerin outlier durumlari
+
+
+ggplot(df, aes(x = cut, y = price, fill = cut)) +
+         geom_boxplot()
+
+```
+# good harici digerleri carpik igib
+1-dağılım hakkında bilgi
+2-aykırılıklar
+
+```{r}
+ggplot(df, aes(x = cut, y = price, fill = cut)) +
+         geom_violin(alpha = 0.6)
+
+#duyarlılık daha yuksek ve frekansa duyarlı ,sıklık gosteriyor 
+
+
+```
+1-surekli
+hist
+yogunluk
+box
+2-kategorik 
+bar plot(sutun)
+
+3-degiskenlere uygun bir gorsellestirme secmeliyiz
+
+##korelasyon
+
+```{r}
+library(tidyverse)
+
+glimpse(iris)
+`````````
+
+
+```{r}
+df <- iris
+str(df)
+```
+
+
+
+```{r}
+ggplot(df,aes(Sepal.Length,Sepal.Width ))+
+  geom_point(size=2,
+             shape=22,
+             stroke=1,
+             color="black",
+             fill="orange")
+
+#surekli degiskeni birbirine gore aldik
+
+```
+
+```{r}
+ggplot(df, aes(Sepal.Length, Sepal.Width, color = Species, shape = Species )) +
+  geom_point(size = 6, alpha = 0.6)
+
+
+#tur kırılımında sepal w/l
+```
+
+
+```{r}
+ggplot(df, aes(Sepal.Length, Sepal.Width, color = Petal.Length, size = Petal.Length )) +
+  geom_point(alpha = 0.6) 
+
+```
+
+```{r}
+#birimleri ekleme
+
+
+
+df <- mtcars
+
+ggplot(df, aes(x = wt, y = mpg, fill = cyl)) +
+  geom_point() + 
+  geom_label(label = rownames(df),  
+            nudge_x = 0.25, 
+            nudge_y = 0.2) +
+  geom_smooth(method = lm, se = FALSE) #regresyon cizgisi
+
+
+
+```
+mpg- wt 
+cyclinder -names
+Korelasyonun negatif olmasi dısında farklı değiskenlere gore nasıl degistigini anlamaya calısıyoruz
+
+
+
+
+
+

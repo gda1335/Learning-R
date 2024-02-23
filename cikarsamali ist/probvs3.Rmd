@@ -1,0 +1,31 @@
+```{r}
+#iki orneklem oran testi --> ab testi
+```
+
+iki oran arasındaki fark anlamlı mıdır?
+# 5. Iki Orneklem Oran Testi
+
+## 5.1 Problem
+
+Butonlarin renkleri degistirilmek isteniyor yesil mi kirmizi mi?
+
+## 5.2 Veri Seti
+
+Yesil Buton: 300 tiklanma 1000 goruntulenme
+Kirmizi Buton: 250 tiklanma 1100 goruntulenme
+
+## Varsayim
+N>30 Z TESTI
+
+```{r}
+prop.test(x = c(300, 250), n = c(1000, 1100))
+```
+#HO COK KUCUK REDDEDİLDİ 
+ANLAMLI BİR FARK VARDIR,İKİ ORAN ARASINDA
+%95 GUVENILIRLIKLE 
+
+1-VARYANS ANALİZİ ANOVA
+  
+
+
+

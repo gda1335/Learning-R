@@ -1,0 +1,89 @@
+```{r}
+a <- 4
+
+if(a > 5) {
+  
+  print("buyuk")
+  
+  
+} else if(a < 5){
+  
+  print("kucuk")
+}
+```
+
+
+```{r}
+a <- 5
+ifelse(a>2,5,6) #tek satirda if/else
+
+```
+```{r}
+#for
+
+a <- 1:10
+
+
+
+```
+
+
+
+```{r}
+a <- 1:10
+a*5
+
+
+for (i in 1:5)
+{
+print(i^2)
+}
+```
+
+
+```{r}
+a <- c(2,4,5,7,8) #liste gibi bisey
+
+for(i in a)
+{print(i)
+  }
+
+
+
+
+
+```
+
+```{r}
+#kategoriye iliskin islem apply ile genelde
+
+#her bir kategoriye gidip degisken yapalim
+
+
+a <- factor(a) #kategori
+for (i in a)
+{
+  print(i)
+}
+
+for (i in levels(a)){
+  print(a)
+  
+}
+
+```
+```{r}
+#kategorike islem için levels
+
+
+#df içinse
+a <- factor(a) #kategori
+
+
+for(i in levels(df$a)) {
+  
+  print(a)
+  
+}
+```
+

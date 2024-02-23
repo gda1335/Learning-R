@@ -1,0 +1,68 @@
+## magaza skoru 
+```{r}
+df <- mtcars
+head(df) #ilk 5
+
+library(ggpubr)
+ggscatter(df, x = "mpg", y ="wt",
+          add = "reg.line", 
+          conf.int = TRUE,
+          cor.coef = TRUE, 
+          cor.method = "pearson")
+
+```
+
+
+1- varsayım kontrolu 
+
+
+```{r}
+
+shapiro.test(df$mpg)
+shapiro.test(df$wt)
+```
+
+2-korelasyon testi
+
+
+
+```{r}
+cor.test(df$wt,df$mpg,method="pearson")
+```
+% 87 oranında aralarında korelasyon vardır
+ho red
+1- normallik varsayım saglanmazsa non para
+
+
+```{r}
+cor.test(df$mpg, df$wt, method = "kendall")
+
+```
+
+
+1-korelasyon matrisi
+
+
+```{r}
+cor(df)
+
+cor(df, use = "complete.obs")
+
+library(Hmisc)
+
+rcorr(as.matrix(df))
+```
+
+```{r}
+
+#install.packages("PerformanceAnalytics")
+library(PerformanceAnalytics)
+
+df <- mtcars[, c(1,3,4,5,6,7)] #surekli degisken indexleri
+
+chart.Correlation(df, histogram = TRUE, pch = 19)
+
+
+
+```
+

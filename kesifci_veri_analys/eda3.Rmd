@@ -1,0 +1,91 @@
+```{r}
+#histogram ve yogunluk
+
+install.packages(tidyverse)
+df <- diamonds
+glimpse(df)
+```
+```{r}
+#ggplot(df,aes(price))+
+  #geom_bar() bar plot
+
+
+ggplot(df,aes(price))+
+  geom_histogram(binwidth =1600 )
+
+
+```
+
+```{r}
+
+#yogunluk grafigi 
+
+
+ggplot(df,aes(price))+
+       geom_density() #yogunluk grafiği 
+
+```
+```{r}
+#ikisi birlike
+
+ggplot(df,aes(price))+
+       geom_density(alpha=.3,fill="orange")+
+  geom_histogram(aes(y=..density..))
+#yogunluk grafiği 
+
+```
+```{r}
+#kategorik degisken kırılımda
+ggplot(df, aes(price)) +
+  geom_histogram() + 
+  facet_grid(cut ~. )
+
+#diamond cut vs price
+```
+##ridgeline
+
+```{r}
+install.packages("ggridges")
+
+```
+
+```{r}
+library(ggridges)
+
+ggplot(df, aes(x = price, y = cut, fill = cut)) +
+  geom_density_ridges() + 
+  theme_ridges() + 
+  theme(legend.position = "none")
+
+```
+```{r}
+
+install.packages("plotly")  #interaktif histogram
+
+```
+
+```{r}
+library(plotly)
+g <- plot_ly(x = rnorm(500), type = "histogram")
+#normal dagılımdan 500 sayi cekilmeli
+g
+```
+
+
+```{r}  
+#interaktif /kategorical hist
+g <- plot_ly(x = rnorm(500), opacity = 0.6, type = "histogram") %>%
+  add_trace(x = rnorm(500) + 1) %>%
+  layout(barmode =  "overlay")
+g
+```
+```{r}
+#surekli icin histogram
+ggplot(df, aes(price, y = ..density..)) +
+  geom_density(aes(colour = cut), binwidth = 500)
+
+#kirilmasi istenen frekans cut
+
+#histogram olsa ondeki belki baskılardi o yuzden yogunluk agırlıklı gittik
+```
+

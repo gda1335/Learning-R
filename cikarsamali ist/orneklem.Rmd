@@ -1,0 +1,94 @@
+```{r}
+
+#hipotez :Hipotez nedir?
+
+#H0: M  >= 170  
+#H1: M  <  170
+
+
+olcumler <- c(17, 160, 234, 149, 145, 107, 197, 75, 201, 225, 211, 119, 
+              157, 145, 127, 244, 163, 114, 145,  65, 112, 185, 202, 146,
+              203, 224, 203, 114, 188, 156, 187, 154, 177, 95, 165, 50, 110, 
+              216, 138, 151, 166, 135, 155, 84, 251, 173, 131, 207, 121, 120)
+
+summary(olcumler)
+
+#ornek sayisi artttikca zye yaklasır
+#anakitle std bili
+
+```
+
+#reddedilmeli.
+#ana kitle std bilinmiyor,n>30 z 
+# std bilinmiyorsa n<30 ise t testi
+
+```{r}
+hist(olcumler) #dagılım hk 
+
+```
+```{r}
+install.packages("ggpubr")
+
+```
+#yukardaki histogram ciziminde evet, normale benziyor 
+
+
+```{r}
+library(ggpubr)
+ggqqplot(olcumler)
+
+```
+##sample - teorik arası noktaları kumelenmis normalmis gibi
+gorunuyor
+
+## shapiro wilks(bunun alternatifi normallik testi)
+
+#Shapiro-Wilks
+
+
+
+```{r}
+shapiro.test(olcumler)
+```
+
+#h0 : fark olmadıgını soyledik
+yokluk hipotezi reddedilirse vardır
+h0 derki ,teorik normal dagılım ile ornek dagılım arası fark yok
+h0 reddedilirse var fark old soylenir,
+p<0005 den kucuk olması iyi degil 
+p> 0005 olması reddemememiz demektir
+yani h0 kabul demektir
+
+bu ornekte p=0.78 >005 
+yani h0 accepted
+
+```{r}
+#tek orneklem t testi
+summary(olcumler)
+t.test(olcumler, mu = 170, alternative = "less", conf.level = 0.95)
+#alpha = 005 conf = 095
+
+#daha az oldugunu ortalamanın iddia ediyoruz t testinde
+#p-value = 0.01723 p<005 
+#H0 REDDDEBİLİRİZ:
+#h0 derki ana kitle ort.> 170
+
+
+```
+
+```{r}
+
+#infer fonksiyonu
+
+install.packages("inferr")
+library(inferr)
+df <- data.frame(olcumler)
+infer_os_t_test(df, olcumler, mu = 170, type = all)
+
+#argument df 
+
+```
+#yorum : 1- %95 guvenirlikle anakitle-ornek arası fark -30 ile -1 arası olcaktır.
+
+
+

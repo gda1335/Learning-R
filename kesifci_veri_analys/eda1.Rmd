@@ -1,0 +1,72 @@
+
+1. Amac Ne?
+
+2. Tidy Data Sureci
+
+3. Degisken Turlerinin Belirlenmesi ve Ayarlanmasi
+
+4. Ozet Istatistikler: Veri Setinin Temel Yapisinin Gösterilmesi
+
+5. Kesifci Veri Analizi
+
+
+
+```{r}
+library(tidyverse)
+library(dplyr) #conflict solved :)
+df <- mpg
+df$class <- factor(df$class)  #categorik olmali
+glimpse(df)
+```
+
+
+```{r}
+df$disp_yeni <- ifelse(df$displ > 2, "bir", "sifir")  #atama 
+df$disp_yeni <- factor(df$disp_yeni)    # onu factor yaptık
+```
+
+
+```{r}
+df$disp_iki <- cut(df$displ, breaks = c(0,2, max(df$displ)))  #daha buyuk olanlari nanlamasin diye!  #yapılacak donusum sıraları 
+str(df)
+```
+
+
+
+```{r}
+colnames(df)
+#rownames(mpg)
+nrow(mpg)
+ncol(mpg)
+```
+
+
+```{r}
+#head(mpg)
+str(mpg) #tipleri 
+glimpse(mpg) #observation sayilari
+```
+
+
+```{r}
+psych::headTail(mpg)  #ilk 4 son 4
+```
+
+
+```{r}
+summary(df)
+```
+
+
+```{r}
+fivenum(df$displ)
+```
+
+
+```{r}
+levels(df$class) #kategorik fonksiyonlar
+```
+
+
+
+

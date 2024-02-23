@@ -1,0 +1,261 @@
+---
+title: "matrisler"
+output: html_document
+date: "2024-02-20"
+---
+
+```{r}
+v1 <- c(3,4,6,8,5)
+v2 <- c(4,8,4,7,1)
+v3 <- c(2,2,5,4,6)
+v4 <- c(4,7,5,2,5)
+m= cbind(v1,v2,v3,v4)
+m
+
+
+is.matrix(m)
+```
+```{r}
+matrix(1:9,3,3)
+
+#3x3 1:9 matrix
+
+
+```
+```{r}
+matrix(1:9,nrow = 3, ncol = 3, byrow=TRUE)
+```
+
+
+
+
+```{r}
+matrix(c(1,2,3,4,6,4,nrow=6,ncol=1,BYROW=TRUE))
+```
+
+
+```{r}
+matrix(c(1,2,3,11,22,33), nrow = 2, ncol = 3, byrow = TRUE)
+```
+
+
+
+```{r}
+m <- matrix(c(1,2,11,22,111,222,1111,2222), 
+       nrow = 4, 
+       ncol = 2, 
+       byrow = TRUE)
+m
+```
+
+
+
+```{r}
+m <- matrix(c(1,2,11,22,111,222,1111,2222), 
+       nrow = 4, 
+       ncol = 2, 
+       byrow = TRUE,
+       dimnames = list(c("rakam","onluk","yuzluk","binlik"), c("bir", "iki")))
+m
+
+#boyuta ulasmak
+
+dim(m)
+#[1] 4 2
+```
+```{r}
+m <- rnorm(16, 0, 1)
+m <- matrix(m, nrow = 4, ncol = 4)
+
+n <- rnorm(16, 90, 10)
+n <- matrix(n, nrow = 4, ncol = 4)
+
+birlestir <- cbind(m, n) #sutun bazında
+print(birlestir)
+
+```
+
+
+
+```{r}
+m <- rnorm(16, 0, 1)
+m <- matrix(m, nrow = 4, ncol = 4)
+
+n <- rnorm(16, 90, 10)
+n <- matrix(n, nrow = 4, ncol = 4)
+
+birlestir <- rbind(m, n)
+print(birlestir)
+
+```
+```{r}
+m <- matrix(c(1,2,11,22,111,222,1111,2222), 
+       nrow = 4, 
+       ncol = 2, 
+       byrow = TRUE)
+m
+
+print("isimlenmis hali--->")
+colnames(m) <- c("bir","iki")
+rownames(m) <- c("rakam", "onlar", "yuzler", "binler")
+m
+```
+
+```{r}
+#index ve elemana erismek
+
+m[1,1]
+m[1,2]
+m[2,2]
+m[,2] #2.sutunu al
+```
+
+```{r}
+#df
+
+df <- data.frame(
+  magaza_no = c(1:5), 
+  semt = c("Mecdky","Bjk","Kdky","Bgclar","Gop"),
+  ort_kazan=c(20,30,60,70,61)
+)
+
+
+df
+str(df) #str olarak
+summary(df)
+nrow(df)
+ncol(df)
+
+dim(df)
+
+
+
+```
+```{r}
+df <- data.frame(
+  magaza_no = c(1:5), 
+  semt = c("Mecdky","Bjk","Kdky","Bgclar","Gop"),
+  ort_kazan=c(20,30,60,70,61)
+)
+
+df2 <- data.frame(
+   magaza_no = c (1:5), 
+   gecmis = c(2,4,5,3,6),
+   per_sayisi = c(23,43,21,11,13)
+)
+
+
+df3 <- merge(df,df2,by="magaza_no") #hangi degiskene gore
+df3
+
+```
+```{r}
+cbind(df,df2) #yan yana  #merge ile yapilan islemin aynisi
+```
+```{r}
+#rbind(df,df2) #degisken isimlei ayni degilse rbind yapamaz
+
+```
+```{r}
+rbind(df,df)
+```
+```{r}
+
+
+#degisken secme
+
+df$magaza_no
+
+
+df$muster_s=c(12,45,6,8,3) #musteri sayisini degisken olarak ekleme
+
+df
+
+```
+
+
+```{r}
+#silmek 
+
+df$muster_s=NULL
+df
+
+df$personel_s=c(100,50,5,24,2) #ekledim 
+
+df
+#personel basi ort kazanc
+
+df$kazanc <- df$ort_kazan/df$personel_s
+
+
+```
+
+
+```{r}
+#df isimlendirme
+colnames()
+rownames()
+
+```
+
+
+```{r}
+#matrix --> df
+m <- matrix(1:9, nrow=3, ncol=3, byrow = TRUE)
+m
+
+df <- as.data.frame(m)  #df 
+df
+is.data.frame(df)
+
+```
+```{r}
+install.packages("ggplot2")
+library(ggplot2)
+mpg
+```
+
+
+```{r}
+data.frame(mpg$manufacturer,mpg$model)
+
+#column sectim
+
+mpg[1,2]
+
+
+
+```
+```{r}
+mpg[1:2] #ilk 2 col
+```
+
+
+```{r}
+mpg[mpg$manufacturer=="audi",]
+```
+
+
+```{r}
+
+#kosullu
+mpg[mpg$manufacturer=="audi" & mpg$year==2008,]
+```
+
+
+
+```{r}
+mpg[mpg$manufacturer=="honda" & mpg$year>2000,]
+```
+
+```{r}
+#deger degistirme
+
+mpg[1,1] <- "ali"
+```
+
+
+
+
+
+
